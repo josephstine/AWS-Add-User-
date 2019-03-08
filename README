@@ -1,0 +1,5 @@
+to run the adduser.sh file follow the commands
+1. chmod +x adduser.sh
+2. sudo ./adduser.sh
+
+Program should prompt user for username, full name, and password. Will return a success message when user is added succesfully.
