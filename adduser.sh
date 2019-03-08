@@ -4,11 +4,11 @@ if [ $(id -u) -eq 0 ]; then #if user id is equal to 0 ("aka root") read the user
 	read -p "Enter full name: " fullname
 	read -s -p "Enter password: " password
 	egrep "^$username" /etc/passwd >/dev/null #print the username
-	if [ $? -eq 0 ]; then
+	if [ $? -eq 0 ]; then #if the user exists don't do anything
 		echo "$user already exists!"
 		exit 1
 	else
-		pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
+		pass=$(perl -e 'print crypt($ARGV[0], "password")' $password) #hash the password using crypt and perl
 		useradd -m -p $pass $username
 		usermod -c "$fullname" $username
 		[ $? -eq 0 ] && echo "User added succesfully" || echo "User couldn't be added!"
