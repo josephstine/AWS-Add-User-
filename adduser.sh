@@ -1,10 +1,10 @@
 #!/bin/bash
-if [ $(id -u) -eq 0 ]; then #if user id is equal to 0 ("aka root") read the username, fullname, and password
+if [ $(id -u) -eq 0 ]; then #if user id is equal to 0/root read the username,fullname, and password
 	read -p "Enter username: " username 
 	read -p "Enter full name: " fullname
 	read -s -p "Enter password: " password
 	egrep "^$username" /etc/passwd >/dev/null #print the username
-	if [ $? -eq 0 ]; then #if the user exists don't do anything
+	if [ $? -eq 0 ]; then #if the user exists do nothing
 		echo "$user already exists!"
 		exit 1
 	else
@@ -18,6 +18,7 @@ else
 	exit 2
 fi
 
+#copy files from skel to the home of the username, make the directory,mod then, chown
 cp -r /etc/skel/. /home/"$username"
 mkdir -p /home/"$username"
 chmod -R 770 /home/"$username" 
