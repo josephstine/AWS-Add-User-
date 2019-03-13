@@ -3,3 +3,12 @@ to run the adduser.sh file follow the commands
 2. sudo ./adduser.sh
 
 Program should prompt user for username, full name, and password. Will return a success message when user is added succesfully.
+
+to run the aws.py file follow the commands
+1. python aws.py
+
+Program will prompt the user to enter a keyname for the .pem file. A file will be created in the current local directoy with "keyname".pem
+after this takes place the program will create an instance using this "keyname".pem file, please use unique keynames each time the script is ran.
+If the key was already created AWS will return an error. If you insist on using the same key name to get rid of this error remove the "keyname.pem" file from your local directory, 
+then run the command in the terminal " aws ec2 delete-key-pair --key-name "keyname" " and this should sovle the issue. The program will print
+the ip address and local path to the .pem private key, please allow time for the instance to start to run on AWS.
