@@ -17,7 +17,7 @@ key_pair = ec2.create_key_pair(KeyName=keyname)
 
 # capture the key and store it in a file
 KeyPairOut = str(key_pair.key_material)
-print("Setting up the instance. Pleas wait")
+print("Setting up the instance. Please wait")
 outfile.write(KeyPairOut)
 os.chmod(filename,0400) #chmod it with the permissions 400
 
